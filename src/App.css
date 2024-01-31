@@ -22,19 +22,53 @@ p {
   font-size: 3rem;
 }
 
-.body {
-  margin: 20px 0 10px;
+.timer {
+  margin-top: 20%;
+  text-align: center;
   font-size: 0.9rem;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.input-field {
+  max-width: 300px;
+  font-size: 20px;
 }
 
 button {
   outline: none;
   border: none;
   border-radius: 8px;
-  padding: 10px 35px;
-
+  padding: 10px 25px;
+  margin: 0 10px;
   background: #845ec2;
   color: white;
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  align-items: center;
+  gap: 30px;
+}
+
+body {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://images.unsplash.com/photo-1499377193864-82682aefed04?q=80&w=1782&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
 
 @media (prefers-reduced-motion: no-preference) {
