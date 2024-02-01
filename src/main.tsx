@@ -3,12 +3,11 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// import App from './App';
-import Timer from './components/Timer';
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Timer />
+    <App />
   </React.StrictMode>,
   document.getElementById('root'),
 );
