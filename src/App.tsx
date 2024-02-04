@@ -1,15 +1,15 @@
-import './App.css';
+import './styles/Form.css';
 
-import React, { useState } from 'react';
-
-import Timer from './components/Timer';
+import UserActivity from './components/UserActivityForm';
+import UserForm from './components/UserDataDisplay';
 import Weather from './components/Weather';
 
 function App() {
   return (
     <div className="App">
-      {/* <Timer /> */}
-      <Weather />
+      {/* <Weather /> */}
+      <UserActivity />
+      {/* <UserForm /> */}
     </div>
   );
 }
