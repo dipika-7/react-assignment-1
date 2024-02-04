@@ -65,12 +65,6 @@ button:hover {
   gap: 30px;
 }
 
-/* body {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url('https://images.unsplash.com/photo-1499377193864-82682aefed04?q=80&w=1782&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-} */
-
 .list-item {
   margin-bottom: 5px;
   font-size: 20px;
