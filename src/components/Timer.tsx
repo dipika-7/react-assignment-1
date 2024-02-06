@@ -4,13 +4,25 @@ import { DEFAULT_START, INTERVAL } from '../constants/timer.constant';
 import Button from './Button';
 import DisplayTime from './DisplayTimer';
 import TimerForm from './TimerForm';
+import { useAppSelector } from '../hooks/useAppSelector';
+import {
+  resetTime,
+  selectTimerIsStart,
+  selectTimerValue,
+  setTimeStart,
+  setTimeStop,
+  timeDecrement,
+  updateTime,
+} from '../features/timer/timerSlice';
+import { useAppDispatch } from '../hooks/useAppDispatch';
 
 const Timer = () => {
-  const time = useRef(DEFAULT_START);
-  const [count, setCount] = useState(time.current);
-  const isStart = useRef<boolean>(false);
   const interval = useRef<number>(0);
   const resetRef = useRef<HTMLButtonElement | null>(null);
+
+  const count = useAppSelector(selectTimerValue);
+  const isStart = useAppSelector(selectTimerIsStart);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (resetRef.current === null) return;
@@ -19,12 +31,10 @@ const Timer = () => {
   }, []);
 
   const handleStart = () => {
-    if (isStart.current) return;
-
     interval.current = setInterval(() => {
-      setCount((newCount) => newCount - 1);
+      dispatch(timeDecrement());
     }, INTERVAL);
-    isStart.current = true;
+    dispatch(setTimeStart());
 
     if (resetRef.current === null) return;
 
@@ -32,9 +42,10 @@ const Timer = () => {
   };
 
   const handleStop = () => {
-    if (!isStart.current) return;
+    if (!isStart) return;
+
     clearInterval(interval.current);
-    isStart.current = false;
+    dispatch(setTimeStop());
 
     if (resetRef.current === null) return;
 
@@ -42,19 +53,18 @@ const Timer = () => {
   };
 
   const handleReset = () => {
-    setCount(time.current);
+    dispatch(resetTime());
     clearInterval(interval.current);
-    isStart.current = false;
   };
 
-  const updateTime = (seconds: number) => {
-    time.current = seconds;
+  const handleUpdateTime = (seconds: number) => {
+    dispatch(updateTime(seconds));
     handleReset();
   };
 
   return (
     <div className="timer">
-      <TimerForm updateTime={updateTime} />
+      <TimerForm updateTime={handleUpdateTime} />
 
       <div className="timer-display">
         <h1>
