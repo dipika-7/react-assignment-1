@@ -1,5 +1,3 @@
-import '../App.css';
-
 import { useEffect, useRef, useState } from 'react';
 
 import { DEFAULT_START, INTERVAL } from '../constants/timer.constant';
