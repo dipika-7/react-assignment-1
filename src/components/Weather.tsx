@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-import { getWeatherData } from '../api/weather';
 import { WeatherData } from '../interface/weather';
 import DisplayWeatherData from './DisplayWeatherData';
 
 const Weather = () => {
-  const [data, setData] = useState<WeatherData>();
-
-  const getData = async () => {
-    const weatherData = await getWeatherData();
-    setData(weatherData);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const data = useLoaderData() as WeatherData;
 
   return <div>{data ? <DisplayWeatherData weatherData={data} /> : 'Loading'}</div>;
 };

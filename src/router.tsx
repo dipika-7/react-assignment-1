@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
+import { getWeatherData } from './api/weather';
 import App from './App';
 import Timer from './components/Timer';
 import UserActivityForm from './components/UserActivityForm';
@@ -21,7 +22,9 @@ const router = createBrowserRouter([
       {
         path: 'weather',
         element: <Weather />,
-        // loader:
+        loader: async () => {
+          await getWeatherData();
+        },
       },
       {
         path: 'user-activity',
